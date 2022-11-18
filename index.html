@@ -13,6 +13,13 @@
       body {
         background-color: #fcc07f;
       }
+.circle {
+   			width: 200px;
+   			height: 200px;
+				background-image: url("site_icon.png");
+    		margin: 5px auto;
+        
+      }
 
       h1 {
         text-align: left;
@@ -20,9 +27,29 @@
         font-size: 30px;
         /*text-shadow: 2px 5px 5px #BBA568;*/
         color: #3B457A;
-        margin-left: 15px
+        /*margin-left: 15px*/
+        transform: rotate(30deg) translate(-9px, 50px);
       }
-    
+      
+      h2 {
+        text-align: left;
+        font-family: "arial";
+        font-size: 30px;
+        /*text-shadow: 2px 5px 5px #BBA568;*/
+        color: #3B457A;
+        /*margin-left: 15px*/
+        transform: rotate(20deg) translate(-26px, 30px);
+     }
+      
+       h3 {
+        text-align: left;
+        font-family: "arial";
+        font-size: 30px;
+        /*text-shadow: 2px 5px 5px #BBA568;*/
+        color: #3B457A;
+        /*margin-left: 15px*/
+        transform: rotate(10deg) translate(-30px, 6px);
+     }
           
        p {
         font-family: "arial";
@@ -67,10 +94,93 @@
         column-count: 3;
         column-gap: 10px;
       }
+      #myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.1)} 
+  to {transform: scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
     </style>
   </head>
   <body>
 
+    		<div class="circle">
+    <h1>hajkdncamdi</h1>
+    <h2>haldjcnascnmasci</h2>
+    <h3>hiadljcancajlcna</h3>
+    </div>
+    
     <h1>ladybugboots</h1>
     <nav>
       <a href="https://ladybugboots.tumblr.com/" target="_blank">tumblr</a>
@@ -82,7 +192,8 @@
     <p>work-in-progress! whenever i feel like it oops.</p>
 
     <div class="columns">
-      <a href="https://ladybugboots.neocities.org/art/gg_bridget.png" target="_blank"><img src="/art/gg_bridget.png" alt="yay" width=100% height=100%></a>
+      <img id="myImg" src=https://ladybugboots.neocities.org/art/gg_bridget.png alt="Northern Lights, Norway" width="300" height="200">
+      <a href="https://ladybugboots.neocities.org/art/gg_bridget.png" target="_blank"><img src="https://ladybugboots.neocities.org/art/gg_bridget.png" alt="yay" width=100% height=100%></a>
       <a href="https://ladybugboots.neocities.org/art/hk_let_me_help_you.gif" target="_blank"><img src="/art/hk_let_me_help_you.gif" alt="yay" width=100% height=100%></a>
       <a href="https://ladybugboots.neocities.org/art/hk_grimm_2.png" target="_blank"><img src="/art/hk_grimm_2.png" alt="yay" width=100% height=100%></a>
       <a href="https://ladybugboots.neocities.org/art/hk_grimm_3.png" target="_blank"><img src="/art/hk_grimm_3.png" alt="yay" width=100% height=100%></a>
@@ -91,9 +202,35 @@
       <a href="https://ladybugboots.neocities.org/art/pkmn_swoobat.png" target="_blank"><img src="/art/pkmn_swoobat.png" alt="yay" width=100% height=100%></a>
       <a href="https://ladybugboots.neocities.org/art/pkmn_mareep_sunflora.png" target="_blank"><img src="/art/pkmn_mareep_sunflora.png" alt="yay" width=100% height=100%></a>
     </div>
-
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
 
   </body>
 
+  <script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
 </html>
 
